@@ -11,13 +11,16 @@ const co = [
   '\x1b[0m',
 ];
 
+const AMOUNT = parseInt(process.env.AMOUNT);
+const SHOW_STRING = process.env.SHOW_STRING;
+
 const generateColor = () => co[Math.floor(Math.random() * co.length)];
 let i = 0;
 let d = false;
 setInterval(() => {
-  console.log(generateColor(), 'Hola'.repeat(i));
-  if (!d && i <= 15) i++;
-  if (i == 15) d = true;
+  console.log(generateColor(), SHOW_STRING.repeat(i));
+  if (!d && i <= AMOUNT) i++;
+  if (i == AMOUNT) d = true;
   if (d && i >= 1) i--;
   if (i == 0) d = false;
 }, 50);
